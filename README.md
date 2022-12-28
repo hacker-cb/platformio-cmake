@@ -1,8 +1,16 @@
-# Set of PlatformIO CMake wrappers to use with cmake-based IDEs (CLion, ...)
+# PlatformIO CMake wrappers
+
+Set of PlatformIO CMake wrappers to use with cmake-based IDEs (CLion, ...)
 
 ## Usage:
 
-Create `CMakeListsUser.txt` with the following content:
+* Add this repository as a submodule to your project:
+
+```bash
+git submodule add https://github.com/hacker-cb/platformio-cmake.git
+```
+
+* Create `CMakeListsUser.txt` with the following content:
 
 ```cmake
 # PlatformIO Environment parser
