@@ -125,7 +125,7 @@ foreach(TEST_NAME ${CURRENT_ENV_TESTS})
         else()
             message(STATUS "[PlatformIO_CTest] Add test: ${PIO_ENV} -> ${TEST_NAME}")
             add_test(NAME ${TEST_NAME}
-                    COMMAND ${PIO_COMMAND} ../test ${PIO_TEST_EXTRA_FLAGS} -e ${PIO_ENV} -f ${TEST_NAME}
+                    COMMAND ${PIO_COMMAND} test ${PIO_TEST_EXTRA_FLAGS} -e ${PIO_ENV} -f ${TEST_NAME}
                     WORKING_DIRECTORY ${PIO_PROJECT_DIR}
                     )
         endif()
