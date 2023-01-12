@@ -28,6 +28,10 @@ enable_testing()
 
 set(PIO_TEST_EXTRA_FLAGS "-v" CACHE STRING "Extra arguments for `platformio test` command")
 
+# Set custom variables
+if(EXISTS ${PIO_PROJECT_DIR}/PlatformIO_CTest_Custom.cmake)
+    include(${PIO_PROJECT_DIR}/PlatformIO_CTest_Custom.cmake)
+endif()
 
 ###############################################################################
 # Save content of the `platformio test --list-tests` command to the file
@@ -123,7 +127,7 @@ foreach(TEST_NAME ${CURRENT_ENV_TESTS})
         if (MATCH_IGNORE EQUAL 1)
             message(STATUS "[PlatformIO_CTest] Ignore test: ${PIO_ENV} -> ${TEST_NAME}")
         else()
-            message(STATUS "[PlatformIO_CTest] Add test: ${PIO_ENV} -> ${TEST_NAME}")
+            message(STATUS "[PlatformIO_CTest] Add test: ${PIO_ENV} -> ${TEST_NAME} (${PIO_TEST_EXTRA_FLAGS})")
             add_test(NAME ${TEST_NAME}
                     COMMAND ${PIO_COMMAND} test ${PIO_TEST_EXTRA_FLAGS} -e ${PIO_ENV} -f ${TEST_NAME}
                     WORKING_DIRECTORY ${PIO_PROJECT_DIR}
